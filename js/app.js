@@ -42,6 +42,120 @@ function CrearCalculadora(){
 		return  numero1.toFixed(2);
 	}
 	
+	function añadirSimbolo(element){
+		current=document.getElementById("display").innerHTML;
+		if (current==="0"){
+			if (element.target.id==="punto"){
+				document.getElementById("display").innerHTML="0";
+			}else{
+				document.getElementById("display").innerHTML="";
+			}
+			
+		}
+		if ((current==="x")||(current==="+")||(current==="-")||(current==="/")){
+			document.getElementById("display").innerHTML="";
+		}
+		if (current.length<8){
+			if (element.target.id==="punto") {
+				if (current[current.length-1]==="."){
+					document.getElementById("display").innerHTML=document.getElementById("display").innerHTML;
+				}else{
+					document.getElementById("display").innerHTML=document.getElementById("display").innerHTML+".";
+				}				
+			}else{
+				if (element.target.id==="sign") {
+					document.getElementById("display").innerHTML=(parseFloat(current)*(-1));
+				}else{	
+					if (element.target.id==="raiz") {
+						document.getElementById("display").innerHTML=document.getElementById("display").innerHTML;
+					}else{
+						document.getElementById("display").innerHTML=document.getElementById("display").innerHTML+element.target.id;
+					}			
+				}
+			}
+		}
+		
+				
+		if (element.target.id==="mas") {
+			
+			if (Numero1===0){
+				Numero1=parseFloat(current);
+				document.getElementById("display").innerHTML="+";
+				Op="+";
+			}else{
+				Numero2=parseFloat(current);
+				Numero1=Operar(Numero1,Numero2,Op);
+				Numero2=0;
+			 	document.getElementById("display").innerHTML="+";
+			 	Op="+"
+			}
+								
+		}else{
+			if (element.target.id==="menos") {
+				
+				if (Numero1===0){
+					Numero1=parseFloat(current);
+					document.getElementById("display").innerHTML="-";
+					Op="-";
+				}else{
+					Numero2=parseFloat(current);
+					Numero1=Operar(Numero1,Numero2,Op);
+					Numero2=0;
+					document.getElementById("display").innerHTML="-";
+					Op="-"
+				}		
+			}else{
+				if (element.target.id==="por") {	
+					if (Numero1===0){
+						Numero1=parseFloat(current);
+						document.getElementById("display").innerHTML="x";
+						Op="x";					
+					}else{
+						Numero2=parseFloat(current);
+						Numero1=Operar(Numero1,Numero2,Op);
+						Numero2=0;
+						document.getElementById("display").innerHTML="x";
+						Op="x"
+					}
+				}else{
+					if (element.target.id==="dividido") {
+						if (Numero1===0){
+							Numero1=parseFloat(current);
+							document.getElementById("display").innerHTML="/";
+							Op="/";					
+						}else{
+							Numero2=parseFloat(current);
+							Numero1=Operar(Numero1,Numero2,Op);
+							Numero2=0;
+							document.getElementById("display").innerHTML="/";
+							Op="/"
+						}
+					}else{
+						if (element.target.id==="igual") {
+							if (Numero1===0){
+								Numero1=parseFloat(current);
+							}else{
+								Numero2=parseFloat(current);
+								Numero1=Operar(Numero1,Numero2,Op);
+								Numero2=0;
+								document.getElementById("display").innerHTML=Numero1;
+								Numero1=0;
+							}										
+						}
+					}
+				}
+			}
+		}	
+
+
+		if (element.target.id==="on") {
+			Numero1=0;
+			Numero2=0;
+			Op=0;
+			document.getElementById("display").innerHTML="0";
+		}
+	}
+	
 		function agregarEventosTeclas(){
 		var teclas=document.getElementsByClassName("tecla");
 
@@ -62,6 +176,7 @@ function CrearCalculadora(){
 		}
 
 	}
+	agregarEventosTeclas();
 }
 
 var calculadora=CrearCalculadora();
