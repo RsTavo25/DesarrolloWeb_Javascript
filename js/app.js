@@ -20,6 +20,28 @@ function CrearCalculadora(){
 		element.target.style.width="90%";
 	}
 	
+	function Operar(numero1,numero2,operador){
+		console.log(numero1);
+		console.log(numero2);
+		console.log(operador);
+		if (operador==="+"){
+			numero1=numero1+numero2;
+		}else{
+			if (operador==="-"){
+				numero1=numero1-numero2;
+			}else{
+				if (operador==="x"){
+					numero1=numero1*numero2;
+				}else{
+					if (operador==="/"){
+						numero1=numero1/numero2;
+					}
+				}
+			}
+		}
+		return  numero1.toFixed(2);
+	}
+	
 		function agregarEventosTeclas(){
 		var teclas=document.getElementsByClassName("tecla");
 
