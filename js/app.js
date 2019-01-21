@@ -1,6 +1,11 @@
 
 function CrearCalculadora(){
+	var current=document.getElementById("display").innerHTML;
 
+	var Numero1=0;
+	var Numero2=0;
+	var Op="+"
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	function decrementar(element){
 		element.target.style.width="21%";
 	}
@@ -19,7 +24,7 @@ function CrearCalculadora(){
 	function incrementar3(element){
 		element.target.style.width="90%";
 	}
-	
+
 	function Operar(numero1,numero2,operador){
 		console.log(numero1);
 		console.log(numero2);
@@ -41,7 +46,7 @@ function CrearCalculadora(){
 		}
 		return  numero1.toFixed(2);
 	}
-	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	function añadirSimbolo(element){
 		current=document.getElementById("display").innerHTML;
 		if (current==="0"){
@@ -155,8 +160,10 @@ function CrearCalculadora(){
 			document.getElementById("display").innerHTML="0";
 		}
 	}
-	
-		function agregarEventosTeclas(){
+
+		
+
+	function agregarEventosTeclas(){
 		var teclas=document.getElementsByClassName("tecla");
 
 		for (var i = teclas.length - 1; i >= 0; i--) {
@@ -176,6 +183,7 @@ function CrearCalculadora(){
 		}
 
 	}
+
 	agregarEventosTeclas();
 }
 
